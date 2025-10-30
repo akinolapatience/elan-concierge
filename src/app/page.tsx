@@ -1,304 +1,660 @@
 "use client";
-import { useState } from "react";
 import {
   Container,
-  Box,
-  Title,
   Stack,
-  Image,
-  Button,
-  Card,
-  Group,
+  Title,
   Text,
-  Flex,
+  Button,
+  Image,
+  Grid,
+  Box,
+  Group,
   Divider,
+  Drawer,
+  Burger,
 } from "@mantine/core";
-import { ClockHour4, Check } from "tabler-icons-react";
-import MessageModal from "./modal";
-import { IconCircleFilled } from "@tabler/icons-react";
+import {
+  IconArrowUpRight,
+  IconBrandInstagram,
+  IconBrandLinkedin,
+} from "@tabler/icons-react";
+import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 
-interface Steps {
-  icon: "ClockHour4";
-  title: string;
-  description: string;
-  status: "completed" | "in-progress" | "pending";
-  dateTime?: string;
-}
+export default function LuxuryConcierge() {
+  const [opened, { toggle, close }] = useDisclosure(false);
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
-const steps: Steps[] = [
-  {
-    icon: "ClockHour4",
-    title: "Booking",
-    description: "You've placed your booking request.",
-    status: "completed",
-    dateTime: "12 Sept 2025, 11:20 AM",
-  },
-  {
-    icon: "ClockHour4",
-    title: "Acceptance",
-    description: "Your booking has been accepted by the host.",
-    status: "in-progress",
-    dateTime: "12 Sept 2025, 11:20 AM",
-  },
-  {
-    icon: "ClockHour4",
-    title: "Payment",
-    description: "You've agreed to the house rules.",
-    status: "pending",
-  },
-  {
-    icon: "ClockHour4",
-    title: "House Rules",
-    description: "You've agreed to the house rules.",
-    status: "pending",
-  },
-  {
-    icon: "ClockHour4",
-    title: "Verification",
-    description: "You're verifying your identity to keep the stay safe",
-    status: "pending",
-  },
-  {
-    icon: "ClockHour4",
-    title: "Insurance & Protection",
-    description: "Your booking will be covered with insurance and protection.",
-    status: "pending",
-  },
-  {
-    icon: "ClockHour4",
-    title: "Check-in",
-    description: "You'll check in to the property.",
-    status: "pending",
-  },
-  {
-    icon: "ClockHour4",
-    title: "Inspection (Arrival)",
-    description: "The property will be inspected at check-in.",
-    status: "pending",
-  },
-  {
-    icon: "ClockHour4",
-    title: "Checkout",
-    description: "You'll check out of the property.",
-    status: "pending",
-  },
-  {
-    icon: "ClockHour4",
-    title: "Inspection (Departure)",
-    description: "The property will be inspected after checkout.",
-    status: "pending",
-  },
-];
+  const logos = [
+    "/Vector (3).png",
+    "/Vector (4).png",
+    "/Vector (3).png",
+    "/Vector (4).png",
+    "/Vector (3).png",
+    "/Vector (4).png",
+    "/Vector (3).png",
+    "/Vector (4).png",
+    "/Vector (3).png",
+    "/Vector (4).png",
+    "/Vector (3).png",
+    "/Vector (4).png",
+    "/Vector (3).png",
+    "/Vector (4).png",
+    "/Vector (3).png",
+    "/Vector (4).png",
+    "/Vector (3).png",
+  ];
 
-export default function EmptyState() {
-  const [opened, setOpened] = useState(false);
+  const services = [
+    {
+      image: "/Rectangle 5.png",
+      title: "Global Travel & Aviation",
+      description:
+        "Private jets, luxury yachts, bespoke itineraries, and seamless escapes worldwide.",
+    },
+    {
+      image: "/Rectangle 5 (1).png",
+      title: "Lifestyle & Access",
+      description:
+        "VIP reservations, sold-out events, red carpet entry, and elite gatherings.",
+    },
+    {
+      image: "/Rectangle 5 (2).png",
+      title: "Hospitality & Wellness",
+      description:
+        "Signature hotels, private villas, spa retreats, and global health management.",
+    },
+    {
+      image: "/Rectangle 5 (3).png",
+      title: "Fashion & Influence",
+      description:
+        "Personal styling, couture exclusives, private shopping, and cultural fashion integration.",
+    },
+    {
+      image: "/Rectangle 5 (4).png",
+      title: "Corporate Concierge",
+      description:
+        "Streamlined support for organizations from travel coordination to premium experiences, we handle the details so your team can focus on what matters most.",
+    },
+    {
+      image: "/Rectangle 5 (5).png",
+      title: "Bespoke Experiences",
+      description:
+        "Curated lifestyle packages, milestone celebrations, and once-in-a-lifetime journeys.",
+    },
+    {
+      image: "/Rectangle 5 (6).png",
+      title: "Luxury Car Hire",
+      description:
+        "From elite sedans to chauffeur-driven classics, we deliver bespoke car hire experiences designed to match your lifestyle and schedule.",
+    },
+  ];
+
   return (
-    <Container
-      w="1010px"
-      top="164px"
-      left="251px"
+    <Box
       style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
+        backgroundColor: "#000",
+        minHeight: "100vh",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <Box
-        h="124px"
-        w="1010px"
-        bg="#16909C"
+      <Container
         style={{
-          gap: "8px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "28px 20px",
+          borderLeft: "1px solid #E2DAD8",
+          borderRight: "1px solid #E2DAD8",
+          borderTop: "none",
+          borderBottom: "none",
         }}
       >
-        <Title order={1} fz="32px" fw={700} c="#FFFFFF" fs="bold">
-          Your Booking Journey
-        </Title>
-        <Title order={6} fz="16px" fw="500" c="#FFFFFF" fs="medium">
-          Track every step of your stay
-        </Title>
-      </Box>
-      <Container>
-        <Stack
-          w="930px"
-          gap="24px"
-          pt="12px"
-          pr="12px"
-          pb="24px"
-          pl="12px"
-          bg="#F5F6F799"
-          style={{
-            gap: "24px",
-            alignItems: "center",
-            marginTop: "50px",
-          }}
-        >
-          <Image radius="1.88px" w="906px" h="313px" src="/image.png" />
-          <Title order={2} fw={700} fz="28px" c="#000000">
-            The Purple Home
-          </Title>
-          <Title order={4} fw={600} fz="20px" c="#6B7280">
-            ID: 234567898764
-          </Title>
-          <Button
-            fw={500}
-            fz={12}
-            radius={0}
-            h={40}
-            w={194}
-            color="#2E2D3A"
-            onClick={() => setOpened(true)}
+        <Group justify="space-between" pl="20px" pr="20px" pt="20px" pb="20px">
+          <Image src="/Logo.png" alt="logo" h="57.63px" w="149.62px" />
+          <Group
+            gap="lg"
+            visibleFrom="sm"
+            style={{
+              color: "#FFFFFF",
+              fontSize: "14px",
+              fontWeight: 500,
+            }}
           >
-            Message Host
-          </Button>
-        </Stack>
-        <Stack mt={24}>
-          {steps.map((step, index) => (
-            <Flex gap={16}>
-              <Stack justify="center" align="center">
-                <IconCircleFilled color="#EAECF0" size={24} />
+            <Text c="#FFFFFF" style={{ cursor: "pointer" }}>
+              Services
+            </Text>
+            <Text c="#FFFFFF" style={{ cursor: "pointer" }}>
+              About Us
+            </Text>
+            <Text c="#FFFFFF" style={{ cursor: "pointer" }}>
+              Contact Us
+            </Text>
+            <Button
+              variant="filled"
+              size="sm"
+              bg="#291B0E"
+              radius={0}
+              c="#FFE0B2"
+              style={{ fontWeight: 600 }}
+            >
+              Schedule Call
+            </Button>
+          </Group>
+          <Burger
+            opened={opened}
+            onClick={toggle}
+            hiddenFrom="sm"
+            color="white"
+            size="sm"
+          />
 
-                <Divider
-                  orientation="vertical"
-                  color="black"
-                  h="100%"
-                  mx="auto"
-                  style={{
-                    border: "2px solid #EDEEF0",
-                  }}
+          <Drawer
+            opened={opened}
+            onClose={close}
+            padding="md"
+            size="xs"
+            overlayProps={{ opacity: 0.55, blur: 3 }}
+            styles={{
+              content: { backgroundColor: "#000000", color: "#FFFFFF" },
+              header: { backgroundColor: "#000000", color: "#FFFFFF" },
+              title: { color: "#FFFFFF" },
+            }}
+          >
+            <Stack gap="md" ta="center">
+              <Text onClick={close} c="#FFFFFF" style={{ cursor: "pointer" }}>
+                Services
+              </Text>
+              <Divider />
+              <Text onClick={close} c="#FFFFFF" style={{ cursor: "pointer" }}>
+                About Us
+              </Text>
+              <Divider />
+              <Text onClick={close} c="#FFFFFF" style={{ cursor: "pointer" }}>
+                Contact Us
+              </Text>
+              <Button
+                variant="filled"
+                bg="#291B0E"
+                radius={0}
+                c="#FFE0B2"
+                onClick={close}
+              >
+                Schedule Call
+              </Button>
+            </Stack>
+          </Drawer>
+        </Group>
+        <Divider
+          style={{
+            width: "200vw",
+            marginLeft: "-170px",
+            borderTop: "1px solid #e9ecef",
+          }}
+        />
+        <Stack gap="xl">
+          <Box
+            ta="left"
+            ml="lg"
+            mt="lg"
+            style={{ maxWidth: "100%", overflow: "hidden" }}
+          >
+            <Image
+              src="/Rectangle 3.png"
+              alt="Concierge service"
+              w="100%"
+              h="auto"
+              pr="xl"
+              style={{
+                maxWidth: "920px",
+                width: "100%",
+                borderRadius: "8px",
+              }}
+            />
+
+            <Title
+              c="#FFFFFF"
+              fz={{ base: 32, sm: 48, md: 64, lg: 96 }}
+              fw={400}
+              mt="md"
+            >
+              Luxury Begins With a Conversation.
+            </Title>
+
+            <Text
+              fz={{ base: 14, sm: 15, md: 16 }}
+              fw={400}
+              c="#D4D4D4"
+              maw="90%"
+              style={{ lineHeight: 1.6 }}
+            >
+              At ÉLAN, we believe true luxury is personal. That’s why every
+              journey starts with a “45 minutes Get to Know Me call” — a private
+              conversation where we understand your world, your tastes, and your
+              vision of the extraordinary. From that moment, we design
+              experiences and services that are uniquely yours.
+            </Text>
+          </Box>
+
+          <Divider />
+
+          {isSmallScreen ? (
+            <Stack align="center" gap="lg" w="100%" ta="center">
+              <Image
+                src="/Rectangle 4.png"
+                alt="luxury living"
+                w="100%"
+                h="auto"
+                radius="md"
+              />
+
+              <Box w="90%">
+                <Image
+                  src="/Vector (5).png"
+                  alt="icon"
+                  w="40px"
+                  h="40px"
+                  c="#FFE0B2"
                 />
-              </Stack>
+                <Text c="#F3C989" fz="16px" fw={500}>
+                  ABOUT US
+                </Text>
+                <Title c="#FFFFFF" fz="40px" fw={400}>
+                  Redefining Luxury Living
+                </Title>
+                <Text c="#D4D4D4" fz="16px" fw={400}>
+                  ÉLAN is a global luxury concierge brand dedicated to curating
+                  tailored experiences for individuals who value discretion,
+                  access, and sophistication. From everyday privileges to
+                  once-in-a-lifetime moments, our role is to simplify your world
+                  and elevate every detail.
+                </Text>
 
-              <Card
-                key={index}
-                flex={1}
-                withBorder
+                <Button
+                  variant="filled"
+                  color="#291B0E"
+                  size="md"
+                  radius={0}
+                  mt="lg"
+                  rightSection={<IconArrowUpRight size={18} color="#FFE0B2" />}
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    color: "#FFE0B2",
+                  }}
+                >
+                  Schedule Call
+                </Button>
+              </Box>
+            </Stack>
+          ) : (
+            <Group w="920px" h="580px" justify="space-between" gap="lg">
+              <Image
+                src="/Rectangle 4.png"
+                alt="luxury living"
+                w="450px"
+                h="500px"
+                p="20px"
+              />
+
+              <Divider size="xs" orientation="vertical" />
+
+              <Box
+                w="403px"
+                h="514px"
                 style={{
-                  padding: "10px",
-                  backgroundColor:
-                    step.status === "completed"
-                      ? index === 0
-                        ? "#ECFDF5"
-                        : "#A7F3D0"
-                      : step.status === "in-progress"
-                      ? "#FFFFFF"
-                      : "#fff",
-                  border:
-                    step.status === "completed"
-                      ? "1px solid #A7F3D0"
-                      : step.status === "in-progress"
-                      ? "1px solid #EDEEF0"
-                      : step.status === "pending"
-                      ? "1px solid #F5F6F7"
-                      : undefined,
+                  position: "relative",
                 }}
               >
-                <Group>
-                  {(() => {
-                    if (step.status === "completed") {
-                      return (
-                        <Box
-                          style={{
-                            backgroundColor: "#16A34A",
-                            padding: "6px",
-                            borderRadius: "50%",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                          }}
-                        >
-                          <Check color="#FFFFFF" size={24} />
-                        </Box>
-                      );
+                <Image
+                  src="/Vector (5).png"
+                  alt="icon"
+                  w="40px"
+                  h="40px"
+                  c="#FFE0B2"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    right: 0,
+                    bottom: 36,
+                  }}
+                />
+                <Box mt="60px">
+                  <Text c="#F3C989" fz="16px" fw={500}>
+                    ABOUT US
+                  </Text>
+                  <Title c="#FFFFFF" fz="60px" fw={400}>
+                    Redefining Luxury Living
+                  </Title>
+                  <Text c="#D4D4D4" fz="16px" fw={400}>
+                    ÉLAN is a global luxury concierge brand dedicated to
+                    curating tailored experiences for individuals who value
+                    discretion, access, and sophistication. From everyday
+                    privileges to once-in-a-lifetime moments, our role is to
+                    simplify your world and elevate every detail.
+                  </Text>
+
+                  <Button
+                    variant="filled"
+                    color="#291B0E"
+                    size="md"
+                    radius={0}
+                    mt="lg"
+                    rightSection={
+                      <IconArrowUpRight size={18} color="#FFE0B2" />
                     }
-                    if (step.status === "in-progress") {
-                      return (
-                        <Box
-                          style={{
-                            backgroundColor: "#D1ECF0",
-                            padding: "6px",
-                            borderRadius: "50%",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                          }}
-                        >
-                          <ClockHour4 color="#26A5B0" size={24} />
-                        </Box>
-                      );
-                    }
-                    return (
-                      <Box
-                        style={{
-                          backgroundColor: "#EAECF0",
-                          padding: "6px",
-                          borderRadius: "50%",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <ClockHour4 color="#A6ADBA" size={24} />
-                      </Box>
-                    );
-                  })()}
-                  <Stack gap="4px">
-                    <Text
-                      fw={700}
-                      c={
-                        step.status === "completed"
-                          ? "#16A34A"
-                          : step.status === "in-progress"
-                          ? "#1F2937"
-                          : step.status === "pending"
-                          ? "#6B7280"
-                          : undefined
-                      }
-                    >
-                      {step.title}
-                      {step.status === "in-progress" && (
-                        <Text
-                          component="span"
-                          fw={500}
-                          fz="10px"
-                          style={{
-                            backgroundColor: "#E1F2F4",
-                            color: "#26A5B0",
-                            padding: "2px 6px",
-                            borderRadius: "60px",
-                            marginLeft: "8px",
-                          }}
-                        >
-                          You are here
-                        </Text>
-                      )}
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      color: "#FFE0B2",
+                    }}
+                  >
+                    Schedule Call
+                  </Button>
+                </Box>
+              </Box>
+            </Group>
+          )}
+
+          <Divider />
+
+          <Group
+            h="76.6px"
+            justify="space-between"
+            mr="lg"
+            ml="lg"
+            style={{
+              flexWrap: "wrap",
+              justifyContent: isSmallScreen ? "center" : "space-between",
+              gap: isSmallScreen ? "16px" : "0px",
+              maxWidth: "100%",
+            }}
+          >
+            {logos
+              .slice(0, isSmallScreen ? 9 : logos.length)
+              .map((logo, index) => (
+                <Image
+                  key={index}
+                  src={logo}
+                  alt={`logo-${index}`}
+                  h={index % 2 === 0 ? "52.6px" : "12px"}
+                  w={index % 2 === 0 ? "52.6px" : "12px"}
+                />
+              ))}
+          </Group>
+          <Divider />
+
+          <Box>
+            <Text ta="center" mb="sm" c="#F3C989" fz="16px" fw={500}>
+              OUR SERVICES
+            </Text>
+            <Title c="#FFFFFF" fz="60px" fw={400} ta="center">
+              Your Desires Perfectly Managed
+            </Title>
+            <Text
+              fz="16px"
+              c="#D4D4D4"
+              ta="center"
+              maw={700}
+              fw={400}
+              mx="auto"
+              mb="xl"
+            >
+              Our services span the following, which allow us to serve your
+              needs and requirements wherever you are. We will look to deliver
+              and exceed, ensuring a 5-star delivery at all times.
+            </Text>
+            <Group justify="center" mb="lg">
+              <Button
+                variant="filled"
+                color="#291B0E"
+                size="md"
+                radius={0}
+                rightSection={<IconArrowUpRight size={18} color="#FFE0B2" />}
+                style={{
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  color: "#FFE0B2",
+                }}
+              >
+                Exclusive Introductory Call{" "}
+              </Button>
+            </Group>
+
+            <Grid gutter="lg" mb="lg" ml="sm" mr="lg">
+              {services.slice(0, 3).map((service, idx) => (
+                <Grid.Col
+                  key={idx}
+                  span={{ base: 12, sm: 4 }}
+                  style={{ display: "flex" }}
+                >
+                  <Box>
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      radius="0"
+                      mb="sm"
+                    />
+                    <Title order={4} mb="xs" fz="24px" c="#FFFFFF" fw={400}>
+                      {service.title}
+                    </Title>
+                    <Text fz="14px" fw={400} c="#CCCCCC">
+                      {service.description}
                     </Text>
-                    <Text fz="12px" fw={600} c="#6B7280">
-                      {step.description}
+                  </Box>
+                  {idx < 2 && (
+                    <Divider
+                      c="#E2DAD8"
+                      orientation="vertical"
+                      mx="md"
+                      style={{
+                        height: "auto",
+                      }}
+                    />
+                  )}
+                </Grid.Col>
+              ))}
+            </Grid>
+
+            <Divider c="#E2DAD8" my="md" />
+
+            <Grid gutter="lg" ml="lg" mr="lg">
+              {services.slice(3).map((service, idx) => (
+                <Grid.Col
+                  key={idx}
+                  span={{ base: 12, sm: 6, md: 3 }}
+                  style={{ display: "flex" }}
+                >
+                  <Box>
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      radius="0"
+                      mb="sm"
+                    />
+                    <Title order={5} mb="xs" fz="24px" c="#FFFFFF" fw={400}>
+                      {service.title}
+                    </Title>
+                    <Text fz="14px" fw={400} c="#CCCCCC">
+                      {service.description}
                     </Text>
-                    {step.status === "pending" && (
-                      <Text fz="10px" fw={400} c="#6B7280">
-                        Pending
-                      </Text>
-                    )}
-                    {step.dateTime && (
-                      <Text fz="10px" c="#6B7280" fw={500}>
-                        {step.dateTime}
-                      </Text>
-                    )}
-                  </Stack>
-                </Group>
-              </Card>
-            </Flex>
-          ))}
+                  </Box>
+                  {idx < 3 && (
+                    <Divider
+                      c="#E2DAD8"
+                      orientation="vertical"
+                      mx="md"
+                      style={{
+                        height: "auto",
+                      }}
+                    />
+                  )}
+                </Grid.Col>
+              ))}
+            </Grid>
+          </Box>
+          <Box>
+            <Image src="/Frame 22.png" alt="Professional team" radius="0" />
+          </Box>
+
+          <Group
+            p="xl"
+            bg="#000000"
+            justify={isSmallScreen ? "center" : "space-between"}
+            align={isSmallScreen ? "center" : "flex-start"}
+            style={{
+              flexDirection: isSmallScreen ? "column" : "row",
+              textAlign: isSmallScreen ? "center" : "left",
+              borderRadius: "0",
+              gap: isSmallScreen ? "0px" : "16px",
+            }}
+          >
+            <Box
+              w={isSmallScreen ? "100%" : "480px"}
+              style={{
+                gap: "16px",
+              }}
+            >
+              <Title
+                c="#E6E6E6"
+                fz={isSmallScreen ? "32px" : "48px"}
+                fw={400}
+                mb="sm"
+              >
+                Your World, Curated in 45 Minutes.
+              </Title>
+              <Text c="#FFFFFF" fz="16px" fw={400}>
+                It takes just one conversation to begin your journey with ÉLAN.
+                A 45-minute Get to Know Me call is all it takes for us to
+                understand your lifestyle and start building the experiences
+                that will define your membership.
+              </Text>
+            </Box>
+
+            <Group
+              justify="center"
+              mb={isSmallScreen ? "0" : "lg"}
+              style={{ paddingTop: "76px" }}
+            >
+              <Button
+                variant="filled"
+                color="#291B0E"
+                size={isSmallScreen ? "md" : "lg"}
+                radius={0}
+                rightSection={<IconArrowUpRight size={18} color="#FFE0B2" />}
+                style={{
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  color: "#FFE0B2",
+                }}
+              >
+                Schedule My 45-Minutes Call
+              </Button>
+            </Group>
+          </Group>
         </Stack>
+        <Divider />
+
+        <Stack
+          justify="space-around"
+          pl="lg"
+          pr="lg"
+          pt="lg"
+          gap="md"
+          align={isSmallScreen ? "center" : "stretch"}
+        >
+          <Group
+            justify="space-between"
+            align={isSmallScreen ? "center" : "flex-start"}
+            style={{
+              flexDirection: isSmallScreen ? "column" : "row",
+              textAlign: isSmallScreen ? "center" : "left",
+              gap: isSmallScreen ? "sm" : "md",
+            }}
+          >
+            <Image src="/Logo.png" alt="logo" h="57.63px" w="149.62px" />
+            <Group gap="xs">
+              <Text
+                c="#D4D4D4"
+                fz="16px"
+                fw={400}
+                style={{ cursor: "pointer" }}
+              >
+                Services
+              </Text>
+              <Divider orientation="vertical" c="#D7D8DF" />
+              <Text
+                c="#D4D4D4"
+                fz="16px"
+                fw={400}
+                style={{ cursor: "pointer" }}
+              >
+                About Us
+              </Text>
+            </Group>
+          </Group>
+
+          <Text
+            c="#D4D4D4"
+            fz="16px"
+            fw={500}
+            ta={isSmallScreen ? "center" : "left"}
+          >
+            A global luxury concierge brand redefining exclusivity, privacy, and
+            curated living.
+          </Text>
+
+          <Box ta={isSmallScreen ? "center" : "left"}>
+            <Button
+              variant="subtle"
+              size="md"
+              rightSection={<IconArrowUpRight size={18} color="#FFE0B2" />}
+              style={{
+                fontSize: "12px",
+                fontWeight: 700,
+                color: "#FFFFFF",
+              }}
+            >
+              More about us
+            </Button>
+          </Box>
+        </Stack>
+
+        <Group
+          justify="space-between"
+          gap="sm"
+          pl="lg"
+          pr="lg"
+          pb="lg"
+          mt="xl"
+          style={{
+            flexDirection: isSmallScreen ? "column" : "row",
+            textAlign: isSmallScreen ? "center" : "left",
+            gap: isSmallScreen ? "md" : "sm",
+          }}
+        >
+          <Group justify={isSmallScreen ? "center" : "flex-start"} gap="xs">
+            <IconBrandInstagram size={15} color="#EFEFF2" />
+            <IconBrandLinkedin size={15} color="#EFEFF2" />
+          </Group>
+
+          <Text c="#D4D4D4" fz="14px" fw={400}>
+            © 2025 — Copyright. All Rights reserved.
+          </Text>
+
+          <Stack
+            align={isSmallScreen ? "center" : "flex-end"}
+            justify="flex-start"
+            gap="md"
+          >
+            <Title c="#FFFFFF" fz="16px" fw={600}>
+              Contact Us
+            </Title>
+            <Text c="#D4D4D4" fz="14px" fw={400}>
+              +234 (123) 456-78-90
+            </Text>
+            <Text c="#D4D4D4" fz="14px" fw={400}>
+              hello@élanluxury.com
+            </Text>
+          </Stack>
+        </Group>
       </Container>
-      <MessageModal opened={opened} onClose={() => setOpened(false)} />
-    </Container>
+    </Box>
   );
 }

@@ -126,16 +126,23 @@ export default function LuxuryConcierge() {
             <Text c="#FFFFFF" style={{ cursor: "pointer" }}>
               Contact Us
             </Text>
-            <Button
-              variant="filled"
-              size="sm"
-              bg="#291B0E"
-              radius={0}
-              c="#FFE0B2"
-              style={{ fontWeight: 600 }}
+            <a
+              href="https://wa.link/t1xp8u"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none" }}
             >
-              Schedule Call
-            </Button>
+              <Button
+                variant="filled"
+                size="sm"
+                bg="#291B0E"
+                radius={0}
+                c="#FFE0B2"
+                style={{ fontWeight: 600 }}
+              >
+                Message Concierge
+              </Button>
+            </a>
           </Group>
           <Burger
             opened={opened}
@@ -213,6 +220,7 @@ export default function LuxuryConcierge() {
               fz={{ base: 32, sm: 48, md: 64, lg: 96 }}
               fw={400}
               mt="md"
+              style={{ fontFamily: "Zodiak, serif" }}
             >
               Luxury Begins With a Conversation.
             </Title>
@@ -222,7 +230,10 @@ export default function LuxuryConcierge() {
               fw={400}
               c="#D4D4D4"
               maw="90%"
-              style={{ lineHeight: 1.6 }}
+              style={{
+                lineHeight: 1.6,
+                fontFamily: "Plus Jakarta Sans, sans-serif",
+              }}
             >
               At ÉLAN, we believe true luxury is personal. That’s why every
               journey starts with a “45 minutes Get to Know Me call” — a private
@@ -255,10 +266,20 @@ export default function LuxuryConcierge() {
                 <Text c="#F3C989" fz="16px" fw={500}>
                   ABOUT US
                 </Text>
-                <Title c="#FFFFFF" fz="40px" fw={400}>
+                <Title
+                  c="#FFFFFF"
+                  fz="40px"
+                  fw={400}
+                  style={{ fontFamily: "Zodiak, serif" }}
+                >
                   Redefining Luxury Living
                 </Title>
-                <Text c="#D4D4D4" fz="16px" fw={400}>
+                <Text
+                  c="#D4D4D4"
+                  fz="16px"
+                  fw={400}
+                  style={{ fontFamily: "Plus Jakarta Sans, sans-serif" }}
+                >
                   ÉLAN is a global luxury concierge brand dedicated to curating
                   tailored experiences for individuals who value discretion,
                   access, and sophistication. From everyday privileges to
@@ -316,13 +337,23 @@ export default function LuxuryConcierge() {
                   }}
                 />
                 <Box mt="60px">
-                  <Text c="#F3C989" fz="16px" fw={500}>
+                  <Text c="#F3C989" fz={{ base: 12, md: 16 }} fw={500}>
                     ABOUT US
                   </Text>
-                  <Title c="#FFFFFF" fz="60px" fw={400}>
+                  <Title
+                    c="#FFFFFF"
+                    fz={{ base: 32, md: 60 }}
+                    fw={400}
+                    style={{ fontFamily: "Zodiak, serif" }}
+                  >
                     Redefining Luxury Living
                   </Title>
-                  <Text c="#D4D4D4" fz="16px" fw={400}>
+                  <Text
+                    c="#D4D4D4"
+                    fz={{ base: 14, md: 16 }}
+                    fw={400}
+                    style={{ fontFamily: "Plus Jakarta Sans, sans-serif" }}
+                  >
                     ÉLAN is a global luxury concierge brand dedicated to
                     curating tailored experiences for individuals who value
                     discretion, access, and sophistication. From everyday
@@ -367,7 +398,7 @@ export default function LuxuryConcierge() {
             }}
           >
             {logos
-              .slice(0, isSmallScreen ? 9 : logos.length)
+              .slice(0, isSmallScreen ? 5 : logos.length)
               .map((logo, index) => (
                 <Image
                   key={index}
@@ -378,23 +409,31 @@ export default function LuxuryConcierge() {
                 />
               ))}
           </Group>
+
           <Divider />
 
           <Box>
             <Text ta="center" mb="sm" c="#F3C989" fz="16px" fw={500}>
               OUR SERVICES
             </Text>
-            <Title c="#FFFFFF" fz="60px" fw={400} ta="center">
+            <Title
+              c="#FFFFFF"
+              fz={{ base: 32, md: 60 }}
+              fw={400}
+              ta="center"
+              style={{ fontFamily: "Zodiak, serif" }}
+            >
               Your Desires Perfectly Managed
             </Title>
             <Text
-              fz="16px"
+              fz={{ base: 14, md: 16 }}
               c="#D4D4D4"
               ta="center"
               maw={700}
               fw={400}
               mx="auto"
               mb="xl"
+              style={{ fontFamily: "Plus Jakarta Sans, sans-serif" }}
             >
               Our services span the following, which allow us to serve your
               needs and requirements wherever you are. We will look to deliver
@@ -431,21 +470,31 @@ export default function LuxuryConcierge() {
                       radius="0"
                       mb="sm"
                     />
-                    <Title order={4} mb="xs" fz="24px" c="#FFFFFF" fw={400}>
+                    <Title
+                      order={4}
+                      mb="xs"
+                      fz="24px"
+                      c="#FFFFFF"
+                      fw={400}
+                      style={{ fontFamily: "Zodiak, serif" }}
+                    >
                       {service.title}
                     </Title>
-                    <Text fz="14px" fw={400} c="#CCCCCC">
+                    <Text
+                      fz="14px"
+                      fw={400}
+                      c="#CCCCCC"
+                      style={{ fontFamily: "Plus Jakarta Sans, sans-serif" }}
+                    >
                       {service.description}
                     </Text>
                   </Box>
-                  {idx < 2 && (
+                  {!isSmallScreen && idx < 2 && (
                     <Divider
                       c="#E2DAD8"
                       orientation="vertical"
                       mx="md"
-                      style={{
-                        height: "auto",
-                      }}
+                      style={{ height: "auto" }}
                     />
                   )}
                 </Grid.Col>
@@ -468,21 +517,31 @@ export default function LuxuryConcierge() {
                       radius="0"
                       mb="sm"
                     />
-                    <Title order={5} mb="xs" fz="24px" c="#FFFFFF" fw={400}>
+                    <Title
+                      order={5}
+                      mb="xs"
+                      fz="24px"
+                      c="#FFFFFF"
+                      fw={400}
+                      style={{ fontFamily: "Zodiak, serif" }}
+                    >
                       {service.title}
                     </Title>
-                    <Text fz="14px" fw={400} c="#CCCCCC">
+                    <Text
+                      fz="14px"
+                      fw={400}
+                      c="#CCCCCC"
+                      style={{ fontFamily: "Plus Jakarta Sans, sans-serif" }}
+                    >
                       {service.description}
                     </Text>
                   </Box>
-                  {idx < 3 && (
+                  {!isSmallScreen && idx < 3 && (
                     <Divider
                       c="#E2DAD8"
                       orientation="vertical"
                       mx="md"
-                      style={{
-                        height: "auto",
-                      }}
+                      style={{ height: "auto" }}
                     />
                   )}
                 </Grid.Col>
@@ -513,13 +572,19 @@ export default function LuxuryConcierge() {
             >
               <Title
                 c="#E6E6E6"
-                fz={isSmallScreen ? "32px" : "48px"}
+                fz={{ base: 32, md: 48 }}
                 fw={400}
                 mb="sm"
+                style={{ fontFamily: "Zodiak, serif" }}
               >
                 Your World, Curated in 45 Minutes.
               </Title>
-              <Text c="#FFFFFF" fz="16px" fw={400}>
+              <Text
+                c="#FFFFFF"
+                fz="16px"
+                fw={400}
+                style={{ fontFamily: "Plus Jakarta Sans, sans-serif" }}
+              >
                 It takes just one conversation to begin your journey with ÉLAN.
                 A 45-minute Get to Know Me call is all it takes for us to
                 understand your lifestyle and start building the experiences
@@ -532,20 +597,22 @@ export default function LuxuryConcierge() {
               mb={isSmallScreen ? "0" : "lg"}
               style={{ paddingTop: "76px" }}
             >
-              <Button
-                variant="filled"
-                color="#291B0E"
-                size={isSmallScreen ? "md" : "lg"}
-                radius={0}
-                rightSection={<IconArrowUpRight size={18} color="#FFE0B2" />}
-                style={{
-                  fontSize: "14px",
-                  fontWeight: 600,
-                  color: "#FFE0B2",
-                }}
-              >
-                Schedule My 45-Minutes Call
-              </Button>
+              <a href="tel:07039925412" style={{ textDecoration: "none" }}>
+                <Button
+                  variant="filled"
+                  color="#291B0E"
+                  size={isSmallScreen ? "md" : "lg"}
+                  radius={0}
+                  rightSection={<IconArrowUpRight size={18} color="#FFE0B2" />}
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    color: "#FFE0B2",
+                  }}
+                >
+                  Schedule My 45-Minutes Call
+                </Button>
+              </a>
             </Group>
           </Group>
         </Stack>
@@ -647,7 +714,7 @@ export default function LuxuryConcierge() {
               Contact Us
             </Title>
             <Text c="#D4D4D4" fz="14px" fw={400}>
-              +234 (123) 456-78-90
+              07039925412{" "}
             </Text>
             <Text c="#D4D4D4" fz="14px" fw={400}>
               hello@élanluxury.com
